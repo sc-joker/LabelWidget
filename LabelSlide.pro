@@ -15,10 +15,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-    LabelWidget.cpp
+    LabelWidget.cpp \
+    JPushButton.cpp
 
 HEADERS  += MainWindow.h \
-    LabelWidget.h
+    LabelWidget.h \
+    JPushButton.h
 
 FORMS    += MainWindow.ui \
     LabelWidget.ui

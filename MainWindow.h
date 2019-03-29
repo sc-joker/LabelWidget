@@ -24,6 +24,8 @@ public slots:
 	void					wideLabel();
 	void					narrowLabel();
 
+	void					clickSlot();
+
 private:
 	Ui::MainWindow *ui;
 	int						m_maxLabelNumber;

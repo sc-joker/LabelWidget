@@ -4,6 +4,9 @@
 #include <QWSServer>
 #endif
 #include <QLabel>
+#include <QDebug>
+
+#include "JPushButton.h"
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -36,11 +39,18 @@ MainWindow::~MainWindow()
 
 void MainWindow::addLabelToWidget()
 {
-	QLabel *label = new QLabel;
-	label->setText(QString::number(++m_maxLabelNumber));
-	label->setStyleSheet("border: 1px groove gray");
+//	QLabel *label = new QLabel;
+//	label->setText(QString::number(++m_maxLabelNumber));
+//	label->setStyleSheet("border: 1px groove gray");
 
-	ui->showWidget->appendWidget(label);
+	JPushButton *button = new JPushButton;
+	button->setText(QString::number(++m_maxLabelNumber));
+	button->setStyleSheet("border: 1px groove gray");
+//	button->setFlat(true);
+
+	connect(button, SIGNAL(clicked(bool)), this, SLOT(clickSlot()));
+
+	ui->showWidget->appendWidget(button);
 }
 
 void MainWindow::addLabel()
@@ -61,4 +71,10 @@ void MainWindow::wideLabel()
 void MainWindow::narrowLabel()
 {
 	ui->showWidget->narrowWidget(5);
+}
+
+void MainWindow::clickSlot()
+{
+	JPushButton *button = reinterpret_cast<JPushButton *>(sender());
+	qDebug() << button->text() << "clicked";
 }

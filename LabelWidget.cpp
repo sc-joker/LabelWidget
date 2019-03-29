@@ -26,6 +26,7 @@ void LabelWidget::appendWidget(QWidget *w)
 	w->setParent(this);
 	w->setGeometry(0, m_childWidgetHeight * m_widgetList.size(), width(), m_childWidgetHeight);
 	w->show();
+//	w->setAttribute(Qt::WA_NoMousePropagation, true);
 
 	m_widgetList.append(w);
 	reflushWidgets();
@@ -64,8 +65,8 @@ void LabelWidget::wideWidget(int step)
 
 	if (m_childWidgetHeight < WIDGET_MIN_HEIGHT)
 		m_childWidgetHeight = WIDGET_MIN_HEIGHT;
-	else if(m_childWidgetHeight > (width() / 2))
-		m_childWidgetHeight = width() / 2;
+	else if(m_childWidgetHeight > (height() / 2))
+		m_childWidgetHeight = height() / 2;
 
 	reflushWidgets();
 }
@@ -76,8 +77,8 @@ void LabelWidget::narrowWidget(int step)
 
 	if (m_childWidgetHeight < WIDGET_MIN_HEIGHT)
 		m_childWidgetHeight = WIDGET_MIN_HEIGHT;
-	else if(m_childWidgetHeight > (width() / 2))
-		m_childWidgetHeight = width() / 2;
+	else if(m_childWidgetHeight > (height() / 2))
+		m_childWidgetHeight = height() / 2;
 
 	reflushWidgets();
 }
